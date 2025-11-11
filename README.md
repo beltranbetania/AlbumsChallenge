@@ -23,7 +23,7 @@ Aplicación Android desarrollada en **Kotlin** con **Jetpack Compose**, que cons
 
 ## ⚠️ Consideracion acerca de las Imágenes ⚠️
 
-La API devuelve URLs de imagenes de `https://via.placeholder.com/`, pero este servicio ya no está disponible.  
+La API devuelve URLs de imagenes de `https://via.placeholder.com/`, pero este servicio ya no está disponible por lo que ninguna imagen era encontrada.  
 Para efectos del test y que no queden las imagenes siempre sin cargar se implementó:  
 
  ```kotlin
