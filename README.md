@@ -42,7 +42,7 @@ El proyecto implementa el patrón **MVVM (Model–View–ViewModel)** con:
 - **ViewModel:** gestiona el flujo de datos y estados usando **Coroutines y Flow**.  
 - **Repository:** interactúa con la API usando **Retrofit + OkHttp**.  
 
-Se usa **Koin** para la inyección de dependencias y **Singletons** en las clases de red.  
+Se usa **Koin** para la inyección de dependencias.
 
 ---
 
@@ -72,8 +72,8 @@ El proyecto incluye **tests unitarios del ViewModel**, que verifican la correcta
 ## ✅ Capturas 
 
 <p align="center">
-  <img src="screenshots/home.png" alt="Home Screen" width="300"/>
-  <img src="screenshots/detail.png" alt="Detail Screen" width="300"/>
-  <img src="screenshots/demo.gif" alt="Detail Screen" width="300"/>
+  <img src="screenshots/home.png" alt="Home Screen" width="200"/>
+  <img src="screenshots/detail.png" alt="Detail Screen" width="200"/>
+  <img src="screenshots/demo.gif" alt="Detail Screen" width="200"/>
 </p>
 
