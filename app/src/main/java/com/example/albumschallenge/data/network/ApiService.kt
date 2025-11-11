@@ -14,5 +14,9 @@ interface ApiService {
     ): List<Album>
 
     @GET("photos")
-    suspend fun getPhotosByAlbum(@Query("albumId") albumId: Int): List<Photo>
+    suspend fun getPhotosByAlbumPaginated(
+        @Query("albumId") albumId: Int,
+        @Query("_start") start: Int,
+        @Query("_limit") limit: Int
+    ): List<Photo>
 }

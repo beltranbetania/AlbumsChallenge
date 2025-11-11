@@ -9,7 +9,9 @@ class AlbumRepository(private val api: ApiService) {
         return api.getAlbumsPaginated(start, limit)
     }
 
-    suspend fun getPhotosByAlbum(albumId: Int): List<Photo> {
-        return api.getPhotosByAlbum(albumId)
-    }
+    suspend fun getPhotosByAlbumPaginated(
+        albumId: Int,
+        start: Int,
+        limit: Int
+    ): List<Photo> = api.getPhotosByAlbumPaginated(albumId, start, limit)
 }

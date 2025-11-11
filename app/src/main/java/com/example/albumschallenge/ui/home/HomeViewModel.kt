@@ -20,6 +20,7 @@ data class HomeUiState(
 )
 
 class HomeViewModel(private val repository: AlbumRepository) : ViewModel() {
+
     private val _state = MutableStateFlow(HomeUiState(isLoading = true))
     val state: StateFlow<HomeUiState> = _state
 
@@ -36,6 +37,7 @@ class HomeViewModel(private val repository: AlbumRepository) : ViewModel() {
 
         viewModelScope.launch {
             val isFirstPage = currentStart == 0
+
             _state.update {
                 it.copy(
                     isLoading = isFirstPage,
@@ -45,8 +47,13 @@ class HomeViewModel(private val repository: AlbumRepository) : ViewModel() {
 
             try {
                 val albums = repository.getAlbums(currentStart, limit)
+
                 val albumsWithPhotos = albums.map { album ->
-                    val photos = repository.getPhotosByAlbum(album.id).take(10)
+                    val photos = repository.getPhotosByAlbumPaginated(
+                        albumId = album.id,
+                        start = 0,
+                        limit = 10
+                    )
                     AlbumWithPhotos(album, photos)
                 }
 
@@ -64,6 +71,7 @@ class HomeViewModel(private val repository: AlbumRepository) : ViewModel() {
                 } else {
                     currentStart += limit
                 }
+
             } catch (e: Exception) {
                 _state.update {
                     it.copy(
