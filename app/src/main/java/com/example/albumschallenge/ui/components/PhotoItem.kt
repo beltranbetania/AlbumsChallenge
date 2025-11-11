@@ -12,6 +12,7 @@ import androidx.compose.ui.unit.dp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.example.albumschallenge.data.model.Photo
+import com.example.albumschallenge.utils.normalizePhotoUrl
 
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
@@ -24,7 +25,7 @@ fun PhotoItem(photo: Photo, onClick: () -> Unit) {
         shape = RoundedCornerShape(12.dp)
     ) {
         GlideImage(
-            model = photo.thumbnailUrl,
+            model = normalizePhotoUrl(photo.thumbnailUrl, photo.id),
             contentDescription = photo.title,
             contentScale = ContentScale.Crop
         )

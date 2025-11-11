@@ -18,6 +18,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import com.example.albumschallenge.data.model.Photo
+import com.example.albumschallenge.utils.normalizePhotoUrl
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -64,7 +65,7 @@ private fun PhotoDetailContent(modifier: Modifier = Modifier, photo: Photo) {
         ) {
             Box(modifier = Modifier.fillMaxSize()) {
                 GlideImage(
-                    model = imageUrl,
+                    model = normalizePhotoUrl(imageUrl, photo.id),
                     contentDescription = photo.title,
                     modifier = Modifier.fillMaxSize(),
                     contentScale = ContentScale.Crop
@@ -75,7 +76,7 @@ private fun PhotoDetailContent(modifier: Modifier = Modifier, photo: Photo) {
         Spacer(modifier = Modifier.height(16.dp))
 
         Text(
-            text = photo.title ?: "",
+            text = photo.title,
             style = MaterialTheme.typography.titleLarge,
             maxLines = 2,
             overflow = TextOverflow.Ellipsis
@@ -84,7 +85,7 @@ private fun PhotoDetailContent(modifier: Modifier = Modifier, photo: Photo) {
         Spacer(modifier = Modifier.height(8.dp))
 
         Text(
-            text = photo.title ?: "",
+            text = photo.title,
             style = MaterialTheme.typography.bodyMedium,
             modifier = Modifier.fillMaxWidth()
         )
